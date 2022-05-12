@@ -1,0 +1,23 @@
+//utils
+@import './utils/reset';
+@import "./utils/fonts";
+@import "./utils/variable";
+@import "./utils/mixins";
+@import "./utils/my-normalize";
+//components
+@import "./components/dots";
+@import "./components/btns";
+@import "./components/footer";
+@import "./components/header";
+//libs
+@import 'libs/slick-slider/slick';
+//sections
+@import "./section/search";
+@import "./section/films";
+
+.container {
+    max-width: 1250px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
