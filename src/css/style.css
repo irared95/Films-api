@@ -421,6 +421,48 @@ button {
   color: #fff;
 }
 
+.card {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+.card__font {
+  margin-bottom: 15px;
+  backface-visibility: hidden;
+}
+.card__font img {
+  display: block;
+  width: 100%;
+}
+.card__back {
+  backface-visibility: hidden;
+  background-color: #1E252B;
+  color: white;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transform: rotateY(180deg);
+  padding: 15px;
+}
+.card__content {
+  font-size: 14px;
+  line-height: 18px;
+  font-family: "Oswald Regular", sans-serif;
+  letter-spacing: 2px;
+  color: #fff;
+  overflow: auto;
+}
+.card:hover {
+  transform: rotateY(-180deg);
+}
+
 /* Slider */
 .slick-slider {
   position: relative;
@@ -568,10 +610,21 @@ button {
   display: flex;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 768px) {
+  .films__list {
+    flex-direction: column;
+  }
+}
 .films__item {
-  margin: 0 7px 15px;
+  margin: 0 7px 40px;
   width: calc(25% - 14px);
   text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .films__item {
+    width: calc(100% - 14px);
+    margin: 0 7px 35px;
+  }
 }
 .films__name {
   font-size: 20px;
@@ -581,54 +634,20 @@ button {
   color: #1E252B;
   margin-bottom: 5px;
 }
-.films__release {
+@media screen and (max-width: 768px) {
+  .films__name {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+.films__release, .films__rating {
+  display: block;
   font-size: 14px;
   line-height: 18px;
   font-family: "Oswald Medium", sans-serif;
   letter-spacing: 2px;
   color: #1E252B;
-}
-
-.card {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
-.card__font {
-  margin-bottom: 15px;
-  backface-visibility: hidden;
-}
-.card__font img {
-  display: block;
-  width: 100%;
-}
-.card__back {
-  backface-visibility: hidden;
-  background-color: #1E252B;
-  color: white;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  transform: rotateY(180deg);
-  padding: 15px;
-}
-.card__content {
-  font-size: 14px;
-  line-height: 18px;
-  font-family: "Oswald Regular", sans-serif;
-  letter-spacing: 2px;
-  color: #fff;
-  overflow: auto;
-}
-.card:hover {
-  transform: rotateY(-180deg);
+  margin-bottom: 10px;
 }
 
 .container {

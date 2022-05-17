@@ -11,16 +11,27 @@ fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
         renderFilms(myJson.results)
     })
 
-    const templateFilmsList = (title, overview, releaseDate, poster) => `<li class="films__item"> <p class="films__name">${title}</p> <div class="card"> <div class="card__font"><img src="${pathImg}${poster}" alt="${title}"></div> <div class="card__back"> <p class="card__content">${overview}</p> </div> </div> <span class="films__release">${releaseDate}</span> </li>`
+    const addZero = (number) => number < 10 ? `0${number}` : number
+
+    function formatToDDMMYYYY(date) {
+        let dateValue = new Date(date)
+        let dd = dateValue.getDate();
+        let mm = dateValue.getMonth()+1;
+        let yyyy = dateValue.getFullYear();
+        return `${addZero(dd)}.${addZero(mm)}.${yyyy}`
+    }
+
+    const templateFilmsList = (title, overview, releaseDate, poster, rating) => `<li class="films__item"> <span class="films__rating">Rating:${rating}</span> <span class="films__release">${releaseDate}</span> <div class="card"> <div class="card__font"><img src="${pathImg}${poster}" alt="${title}"></div> <div class="card__back"> <p class="card__content">${overview}</p> </div> </div> <p class="films__name">${title}</p>   </li>`
 
     const rootFilmsList = document.querySelector('.films__list--js')
     function renderFilms(filmsItems) {
         filmsItems.forEach(filmsItem => {
             const title = filmsItem.title
             const overview = filmsItem.overview
-            const releaseDate = filmsItem.release_date
+            const releaseDate =  formatToDDMMYYYY(filmsItem.release_date)
             const poster = filmsItem.poster_path
-            const templateFilms = templateFilmsList(title, overview, releaseDate, poster)
+            const rating = filmsItem.vote_average
+            const templateFilms = templateFilmsList(title, overview, releaseDate, poster, rating)
             rootFilmsList.innerHTML += templateFilms
         })
     }

@@ -2,11 +2,18 @@
     &__list{
         display: flex;
         flex-wrap: wrap;
+        @include breakpoint($mobile-bp) {
+            flex-direction: column;
+        }
     }
     &__item{
-        margin: 0 7px 15px;
+        margin: 0 7px 40px;
         width: calc(25% - 14px);
         text-align: center;
+        @include breakpoint($mobile-bp) {
+            width: calc(100% - 14px);
+            margin: 0 7px 35px;
+        }
     }
     &__name{
         font-size: 20px;
@@ -15,55 +22,21 @@
         letter-spacing: 2px;
         color: $dark-gray;
         margin-bottom: 5px;
+        @include breakpoint($mobile-bp) {
+            font-size: 18px;
+            line-height: 20px;
+        }
     }
 
-    &__release{
+    &__release,
+    &__rating{
+        display: block;
         font-size: 14px;
         line-height: 18px;
         font-family: $oswald-medium, sans-serif;
         letter-spacing: 2px;
         color: $dark-gray;
-    }
-}
-.card{
-    position: relative;
-    width: 100%;
-    text-align: center;
-    transform-style: preserve-3d;
-    transition: transform 1s;
-    &__font{
-        margin-bottom: 15px;
-        backface-visibility: hidden;
-        img{
-            display: block;
-            width: 100%;
-        }
-    }
-    &__back{
-        backface-visibility: hidden;
-        background-color: #1E252B;
-        color: white;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        transform: rotateY(180deg);
-        padding: 15px;
-    }
-    &__content{
-        font-size: 14px;
-        line-height: 18px;
-        font-family: $oswald-regular, sans-serif;
-        letter-spacing: 2px;
-        color: $white;
-        overflow: auto;
+        margin-bottom: 10px;
     }
 
-    &:hover{
-        transform: rotateY(-180deg);
-    }
 }
