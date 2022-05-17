@@ -1,37 +1,43 @@
-.search{
-    padding: 15px 0 40px;
-    &__field{
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.search {
+  padding: 15px 0 40px;
+
+  &__field {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__input,
+  &__button {
+    font-size: 14px;
+    line-height: 20px;
+    font-family: $oswald-regular, sans-serif;
+    letter-spacing: 2px;
+    color: $dark-gray;
+    border: 1px solid $dark-gray;
+  }
+
+  &__input {
+    width: 50%;
+    margin-right: 10px;
+    padding: 5px;
+  }
+
+  &__button {
+    padding: 5px 20px;
+    transition: .2s linear;
+
+    &:hover {
+      background-color: $dark-gray;
+      color: $white;
     }
-    &__input,
-    &__button{
-        font-size: 14px;
-        line-height: 20px;
-        font-family: $oswald-regular, sans-serif;
-        letter-spacing: 2px;
-        color: $dark-gray;
-        border: 1px solid $dark-gray;
-    }
-    &__input{
-        width: 50%;
-        margin-right: 10px;
-        padding: 5px;
-    }
-    &__button{
-        padding: 5px 20px;
-        transition: .2s linear;
-        &:hover{
-            background-color: $dark-gray;
-            color: $white;
-        }
-    }
-    &__title{
-        font-size: 18px;
-        font-family: $oswald-medium;
-        text-align: center;
-        letter-spacing: 2px;
-    }
+  }
+
+  &__title {
+    font-size: 18px;
+    font-family: $oswald-medium;
+    text-align: center;
+    letter-spacing: 2px;
+  }
 }

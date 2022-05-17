@@ -1,42 +1,44 @@
-.films{
-    &__list{
-        display: flex;
-        flex-wrap: wrap;
-        @include breakpoint($mobile-bp) {
-            flex-direction: column;
-        }
+.films {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    @include breakpoint($mobile-bp) {
+      flex-direction: column;
     }
-    &__item{
-        margin: 0 7px 40px;
-        width: calc(25% - 14px);
-        text-align: center;
-        @include breakpoint($mobile-bp) {
-            width: calc(100% - 14px);
-            margin: 0 7px 35px;
-        }
-    }
-    &__name{
-        font-size: 20px;
-        line-height: 24px;
-        font-family: $oswald-bold, sans-serif;
-        letter-spacing: 2px;
-        color: $dark-gray;
-        margin-bottom: 5px;
-        @include breakpoint($mobile-bp) {
-            font-size: 18px;
-            line-height: 20px;
-        }
-    }
+  }
 
-    &__release,
-    &__rating{
-        display: block;
-        font-size: 14px;
-        line-height: 18px;
-        font-family: $oswald-medium, sans-serif;
-        letter-spacing: 2px;
-        color: $dark-gray;
-        margin-bottom: 10px;
+  &__item {
+    margin: 0 7px 40px;
+    width: calc(25% - 14px);
+    text-align: center;
+    @include breakpoint($mobile-bp) {
+      width: calc(100% - 14px);
+      margin: 0 7px 35px;
     }
+  }
+
+  &__name {
+    font-size: 20px;
+    line-height: 24px;
+    font-family: $oswald-bold, sans-serif;
+    letter-spacing: 2px;
+    color: $dark-gray;
+    margin-bottom: 5px;
+    @include breakpoint($mobile-bp) {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+
+  &__release,
+  &__rating {
+    display: block;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: $oswald-medium, sans-serif;
+    letter-spacing: 2px;
+    color: $dark-gray;
+    margin-bottom: 10px;
+  }
 
 }

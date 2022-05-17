@@ -1,18 +1,21 @@
-.card{
+.card {
   position: relative;
   width: 100%;
   text-align: center;
   transform-style: preserve-3d;
   transition: transform 1s;
-  &__font{
+
+  &__font {
     margin-bottom: 15px;
     backface-visibility: hidden;
-    img{
+
+    img {
       display: block;
       width: 100%;
     }
   }
-  &__back{
+
+  &__back {
     backface-visibility: hidden;
     background-color: #1E252B;
     color: white;
@@ -27,7 +30,8 @@
     transform: rotateY(180deg);
     padding: 15px;
   }
-  &__content{
+
+  &__content {
     font-size: 14px;
     line-height: 18px;
     font-family: $oswald-regular, sans-serif;
@@ -36,7 +40,7 @@
     overflow: auto;
   }
 
-  &:hover{
+  &:hover {
     transform: rotateY(-180deg);
   }
 }
