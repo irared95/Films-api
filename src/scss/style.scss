@@ -5,13 +5,8 @@
 @import "./utils/mixins";
 @import "./utils/my-normalize";
 //components
-@import "./components/dots";
-@import "./components/btns";
-@import "./components/footer";
 @import "./components/header";
 @import "./components/card";
-//libs
-@import 'libs/slick-slider/slick';
 //sections
 @import "./section/search";
 @import "./section/films";

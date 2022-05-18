@@ -1,15 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     const API_KEY = '65b5c49ad1a6d0579a80cb6ab026dfd8'
-    const pathImg = 'https://image.tmdb.org/t/p/w500/'
+    const PATH_IMG = 'https://image.tmdb.org/t/p/w500/'
+
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
-        .then(function (response) {
-            const a = response.json()
-            return a
-        })
-        .then(function (myJson) {
-            console.log('myJson', myJson.results)
-            renderFilms(myJson.results)
-        })
+        .then((response) => response.json())
+        .then((myJson) => renderFilms(myJson.results))
 
     const addZero = (number) => number < 10 ? `0${number}` : number
 
@@ -21,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${addZero(dd)}.${addZero(mm)}.${yyyy}`
     }
 
-    const templateFilmsList = (title, overview, releaseDate, poster, rating) => `<li class="films__item"> <span class="films__rating">Rating:${rating}</span> <span class="films__release">${releaseDate}</span> <div class="card"> <div class="card__font"><img src="${pathImg}${poster}" alt="${title}"></div> <div class="card__back"> <p class="card__content">${overview}</p> </div> </div> <p class="films__name">${title}</p>   </li>`
+    const templateFilmsList = (title, overview, releaseDate, poster, rating) => `<li class="films__item"> <span class="films__rating">Rating:${rating}</span> <span class="films__release">${releaseDate}</span> <div class="card"> <div class="card__font"><img src="${PATH_IMG}${poster}" alt="${title}"></div> <div class="card__back"> <p class="card__content">${overview}</p> </div> </div> <p class="films__name">${title}</p>   </li>`
 
     const rootFilmsList = document.querySelector('.films__list--js')
 
