@@ -544,6 +544,15 @@ button {
   color: #1E252B;
 }
 
+.empty-films {
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "Oswald Bold", sans-serif;
+  letter-spacing: 2px;
+  color: #1E252B;
+  text-align: center;
+}
+
 .container {
   max-width: 1250px;
   width: 100%;

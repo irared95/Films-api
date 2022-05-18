@@ -27,7 +27,7 @@ function compileStyles() {
 
 function transpileScript() {
     return gulp.src('src/script/*.js')
-        .pipe(concat('script.js'))
+        .pipe(concat('myScript.js'))
         .pipe(gulp.dest('src/js'))
         .pipe(browserSync.stream());
 }
