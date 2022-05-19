@@ -4,32 +4,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const PATH_IMG = 'https://image.tmdb.org/t/p/w500/'
     const TEXT_NO_FILMS = 'Not found films'
 
-    function searchFilmsApi(searchValue) {
+    function searchFilmsApi() {
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${inputSearch.value}`)
             .then((response) => response.json())
             .then((myJson) => {
                 deleteFilms()
-                if(myJson.results.length){
+                deleteTextNoFilms()
+                if (myJson.results.length) {
                     renderFilms(myJson.results)
-                } else{
-
+                } else {
+                    renderNoFilms()
                 }
+
+
             })
     }
 
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
-        .then((response) => response.json())
-        .then((myJson) =>{
-            deleteFilms()
-            renderFilms(myJson.results)
-        })
+   function popularFilmsApi() {
+       fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
+           .then((response) => response.json())
+           .then((myJson) => {
+               deleteFilms()
+               deleteTextNoFilms()
+               renderFilms(myJson.results)
+           })
+   }
+
+    popularFilmsApi()
 
     const buttonSearch = document.querySelector('.search__button--js')
     const inputSearch = document.querySelector('.search__input--js')
 
     buttonSearch.addEventListener('click', function () {
-        if (!inputSearch.value.trim()) return false
-        searchFilmsApi()
+        if (!inputSearch.value.trim()) popularFilmsApi()
+        if (inputSearch.value.trim()) searchFilmsApi()
     })
     inputSearch.addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
@@ -67,18 +75,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     const templateNoFilms = (text) => `<p class="empty-films empty-films--js">${text}</p>`
-    templateNoFilms(TEXT_NO_FILMS)
-    //
+
+    const rootNoFilms = document.querySelector('.root-empty-films--js')
+
+    function renderNoFilms() {
+        const renderedNoFilms = templateNoFilms(TEXT_NO_FILMS)
+        rootNoFilms.innerHTML += renderedNoFilms
+    }
 
 
-    function deleteFilms (){
+    function deleteFilms() {
         const filmsItems = document.querySelectorAll('.films__item--js')
-        if(filmsItems.length) {
-            filmsItems.forEach(filmsItem=>{
+        if (filmsItems.length) {
+            filmsItems.forEach(filmsItem => {
                 filmsItem.remove()
             })
 
         }
+    }
+
+    function deleteTextNoFilms(){
+        const deleteText = document.querySelector('.empty-films--js')
+        if (deleteText) deleteText.remove()
+
     }
 
 
