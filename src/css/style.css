@@ -426,7 +426,7 @@ button {
   width: 100%;
   text-align: center;
   transform-style: preserve-3d;
-  transition: transform 1s;
+  transition: transform 0.7s;
 }
 .card__font {
   margin-bottom: 15px;
@@ -449,7 +449,7 @@ button {
   justify-content: center;
   flex-direction: column;
   transform: rotateY(180deg);
-  padding: 15px;
+  padding: 55px 15px 44px;
 }
 .card__content {
   font-size: 14px;
@@ -458,6 +458,16 @@ button {
   letter-spacing: 2px;
   color: #fff;
   overflow: auto;
+}
+.card__favorites {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.card__favorites svg {
+  pointer-events: none;
 }
 .card:hover {
   transform: rotateY(-180deg);

@@ -3,16 +3,18 @@
   width: 100%;
   text-align: center;
   transform-style: preserve-3d;
-  transition: transform 1s;
+  transition: transform .7s;
 
   &__font {
     margin-bottom: 15px;
     backface-visibility: hidden;
 
+
     img {
       display: block;
       width: 100%;
     }
+
   }
 
   &__back {
@@ -28,7 +30,7 @@
     justify-content: center;
     flex-direction: column;
     transform: rotateY(180deg);
-    padding: 15px;
+    padding: 55px 15px 44px;
   }
 
   &__content {
@@ -40,7 +42,19 @@
     overflow: auto;
   }
 
+  &__favorites{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    svg {
+      pointer-events: none;
+    }
+  }
+
   &:hover {
     transform: rotateY(-180deg);
+
   }
 }
