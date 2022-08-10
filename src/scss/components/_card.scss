@@ -1,36 +1,50 @@
 .card {
   position: relative;
-  width: 100%;
+  perspective: 600px;
   text-align: center;
-  transform-style: preserve-3d;
-  transition: transform .7s;
+  margin-bottom: 15px;
 
-  &__font {
-    margin-bottom: 15px;
+
+
+  &__front,
+  &__back {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
     backface-visibility: hidden;
-
+    border-radius: 10px;
+    overflow: hidden;
 
     img {
       display: block;
       width: 100%;
     }
-
   }
 
   &__back {
-    backface-visibility: hidden;
     background-color: #1E252B;
-    color: white;
-    position: absolute;
+    transform: rotateY(180deg);
+
+     padding: 55px 15px 44px;
+    overflow: hidden;
     height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
+  }
+
+  &__front {
+    position: static;
+  }
+
+  &__inner {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    transform: rotateY(180deg);
-    padding: 55px 15px 44px;
+    align-items: center;
+    height: 100%;
+    overflow-y: auto;
   }
 
   &__content {
@@ -39,22 +53,38 @@
     font-family: $oswald-regular, sans-serif;
     letter-spacing: 2px;
     color: $white;
-    overflow: auto;
+    height: 100%;
   }
 
-  &__favorites{
-    width: 30px;
-    height: 30px;
+  &__favorites {
     position: absolute;
     top: 20px;
     right: 20px;
+    path,
     svg {
       pointer-events: none;
+      width: 35px;
+      height: 35px;
+      path{
+        fill: $white;
+      }
     }
+    &.active{
+      path{
+        fill: $yellow ;
+      }
+    }
+
   }
 
   &:hover {
-    transform: rotateY(-180deg);
-
+    .card {
+      &__front {
+        transform: rotateY(180deg);
+      }
+      &__back {
+        transform: rotateY(360deg);
+      }
+    }
   }
 }

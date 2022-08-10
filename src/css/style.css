@@ -423,33 +423,43 @@ button {
 
 .card {
   position: relative;
-  width: 100%;
+  perspective: 600px;
   text-align: center;
-  transform-style: preserve-3d;
-  transition: transform 0.7s;
-}
-.card__font {
   margin-bottom: 15px;
-  backface-visibility: hidden;
 }
-.card__font img {
+.card__front, .card__back {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card__front img, .card__back img {
   display: block;
   width: 100%;
 }
 .card__back {
-  backface-visibility: hidden;
   background-color: #1E252B;
-  color: white;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   transform: rotateY(180deg);
   padding: 55px 15px 44px;
+  overflow: hidden;
+  height: 100%;
+}
+.card__front {
+  position: static;
+}
+.card__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow-y: auto;
 }
 .card__content {
   font-size: 14px;
@@ -457,20 +467,31 @@ button {
   font-family: "Oswald Regular", sans-serif;
   letter-spacing: 2px;
   color: #fff;
-  overflow: auto;
+  height: 100%;
 }
 .card__favorites {
-  width: 30px;
-  height: 30px;
   position: absolute;
   top: 20px;
   right: 20px;
 }
+.card__favorites path,
 .card__favorites svg {
   pointer-events: none;
+  width: 35px;
+  height: 35px;
 }
-.card:hover {
-  transform: rotateY(-180deg);
+.card__favorites path path,
+.card__favorites svg path {
+  fill: #fff;
+}
+.card__favorites.active path {
+  fill: #ffd700;
+}
+.card:hover .card__front {
+  transform: rotateY(180deg);
+}
+.card:hover .card__back {
+  transform: rotateY(360deg);
 }
 
 .search {
